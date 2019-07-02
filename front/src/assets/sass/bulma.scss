@@ -1,0 +1,56 @@
+@import "~bulma/sass/utilities/initial-variables";
+
+$family-sans-serif: "PT Sans", $family-sans-serif;
+$family-monospace: "Fira Mono", $family-monospace;
+
+$family-primary: $family-sans-serif;
+
+$orange:    #f5871f;
+$yellow:    #eab700;
+$green:     #718c00;
+$turquoise: #3e999f;
+$cyan:      $cyan;
+$blue:      #4271ae;
+$purple:    #8959a8;
+$red:       #c82829;
+
+$primary: $red;
+$code: $red;
+$link: $red;
+
+$navbar-item-hover-background-color: $white-ter;
+$navbar-item-active-background-color: $white-ter;
+
+@import "~bulma/bulma";
+// @import "~buefy/src/scss/buefy";
+
+.navbar-brand > .navbar-item img {
+  max-height: 2rem;
+}
+
+.hero-body {
+  padding: 1.5rem 1rem !important;
+}
+
+section {
+  padding: 1.5rem 1rem !important;
+}
+
+pre {
+  padding: 0 !important;
+  white-space: pre;
+}
+
+// .message-body > pre {
+//   margin: -1em -1.25em;
+// }
+
+// .field-label {
+//   text-align: left !important;
+//   flex-grow: 0;
+// }
+
+.footer {
+  background-color: $white-ter;
+  padding: 1.5rem 1rem !important;
+}

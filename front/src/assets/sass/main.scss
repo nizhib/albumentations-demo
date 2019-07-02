@@ -1,0 +1,13 @@
+@import "~highlight.js/styles/atelier-heath-light.css";
+
+@import "bulma";
+
+#app {
+  display: flex;
+  min-height: 100vh !important;
+  flex-direction: column;
+}
+
+#main {
+  flex: 1;
+}

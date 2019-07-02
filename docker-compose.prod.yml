@@ -1,0 +1,33 @@
+version: "3.5"
+
+services:
+  albu-front:
+    image: nginx:1.17-alpine
+    volumes:
+      - ./front/dist:/usr/share/nginx/html:ro
+    networks:
+      - nizhib
+    expose:
+      - 80
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:albumentations.ml
+
+  albu-back:
+    build:
+      context: back
+      dockerfile: Dockerfile
+    networks:
+      - nizhib
+    expose:
+      - 5000
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:albumentations.ml;PathPrefix:/api;PathPrefixStrip:/api
+
+networks:
+  nizhib:
+    name: nizhib
+    driver: bridge
