@@ -12,7 +12,9 @@ services:
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:albumentations.ml
+      - traefik.http.routers.albumentations-front.entrypoints=https
+      - traefik.http.routers.albumentations-front.rule=Host(`albumentations.ml`)
+      - traefik.http.routers.albumentations-front.tls.certresolver=nizhib
 
   albu-back:
     build:
@@ -25,7 +27,11 @@ services:
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:albumentations.ml;PathPrefix:/api;PathPrefixStrip:/api
+      - traefik.http.routers.albumentations-back.entrypoints=https
+      - traefik.http.routers.albumentations-back.rule=Host(`albumentations.ml`) && PathPrefix(`/api`)
+      - traefik.http.routers.albumentations-back.tls.certresolver=nizhib
+      - traefik.http.routers.albumentations-back.middlewares=remove-api
+      - traefik.http.middlewares.remove-api.stripprefix.prefixes=/api
 
 networks:
   nizhib:

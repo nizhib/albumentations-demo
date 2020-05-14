@@ -1,0 +1,6 @@
+albumentations
+flask
+flask-cors
+imageio
+opencv-python-headless
+waitress
