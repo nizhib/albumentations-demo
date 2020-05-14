@@ -1,12 +1,19 @@
 # Albumentations Demo
 
-## Backend setup
+## Easy setup
+
+```bash
+docker-compose up
+```
+
+## Backend-only
+
 ```bash
 python3 -m pip install -r back/requirements.txt
 python3 back/app.py
 ```
 
-## Frontend setup
+## Frontend-only
 
 ### Install dependencies
 ```bash
@@ -25,13 +32,6 @@ yarn --cwd front run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
-## All-in-one setup
-
-Assuming one has already compiled the frontend,
-```bash
-docker-compose up
-```
 
 ## References
 
