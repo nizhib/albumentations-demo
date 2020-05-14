@@ -22,7 +22,6 @@ $navbar-item-hover-background-color: $white-ter;
 $navbar-item-active-background-color: $white-ter;
 
 @import "~bulma/bulma";
-// @import "~buefy/src/scss/buefy";
 
 .navbar-brand > .navbar-item img {
   max-height: 2rem;
@@ -35,20 +34,6 @@ $navbar-item-active-background-color: $white-ter;
 section {
   padding: 1.5rem 1rem !important;
 }
-
-pre {
-  padding: 0 !important;
-  white-space: pre;
-}
-
-// .message-body > pre {
-//   margin: -1em -1.25em;
-// }
-
-// .field-label {
-//   text-align: left !important;
-//   flex-grow: 0;
-// }
 
 .footer {
   background-color: $white-ter;

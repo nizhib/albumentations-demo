@@ -2,9 +2,9 @@ version: "3.5"
 
 services:
   albu-front:
-    image: nginx:1.17-alpine
-    volumes:
-      - ./front/dist:/usr/share/nginx/html:ro
+    build:
+      context: front
+      dockerfile: Dockerfile
     networks:
       - nizhib
     expose:
