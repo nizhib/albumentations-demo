@@ -15,14 +15,14 @@
 <script>
 export default {
   name: 'credits',
-  data() {
+  data () {
     return {
       year: 2019
     }
   },
-  created() {
-    const today = new Date();
-    this.year = today.getFullYear();
+  created () {
+    const today = new Date()
+    this.year = today.getFullYear()
   }
 }
 </script>

@@ -2,15 +2,15 @@ import Vue from 'vue'
 import axios from 'axios'
 import Axios from 'vue-axios'
 
-import App from './App.vue'
+import '@/assets/sass/main.scss'
 
-import './assets/sass/main.scss'
+import App from '@/App'
 
-Vue.use(Axios, axios);
+Vue.use(Axios, axios)
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
+Vue.config.devtools = true
 
 new Vue({
-  el: '#app',
   ...App
-});
+}).$mount('#app')

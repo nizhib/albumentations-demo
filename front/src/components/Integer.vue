@@ -39,37 +39,37 @@ export default {
       default: 1
     }
   },
-  data() {
+  data () {
     return {
       value: this.default
     }
   },
   watch: {
-    value(newVal, oldVal) {
+    value (newVal, oldVal) {
       if (newVal === oldVal) {
-        return;
+        return
       }
-      newVal = Number(newVal);
+      newVal = Number(newVal)
       if (newVal <= this.max && newVal >= this.min) {
-        this.value = newVal;
+        this.value = newVal
       } else {
-        this.value = oldVal;
+        this.value = oldVal
       }
-    },
+    }
   },
   methods: {
-    decrement() {
+    decrement () {
       if (this.value >= this.min - this.step) {
-        this.value -= this.step;
-        this.$emit('decrement');
-        this.$emit('input', this.value);
+        this.value -= this.step
+        this.$emit('decrement')
+        this.$emit('input', this.value)
       }
     },
-    increment() {
+    increment () {
       if (this.value <= this.max - this.step) {
-        this.value += this.step;
-        this.$emit('increment');
-        this.$emit('input', this.value);
+        this.value += this.step
+        this.$emit('increment')
+        this.$emit('input', this.value)
       }
     }
   }

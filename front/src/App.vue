@@ -1,50 +1,55 @@
 <template>
   <div id="app">
-    <navbar/>
-    <hero/>
-    <div id="main">
+    <Navbar />
+    <Hero />
+    <main id="main">
       <section class="section">
         <div class="container">
           <div class="columns">
             <div class="column is-one-quarter">
-              <upload @attached="attach"
-                      @reset="reset"
-                      ref="upload" />
+              <Upload
+                @attached="attach"
+                @reset="reset"
+                ref="upload"
+              />
             </div>
-            <div class="column" v-show="image">
-              <request :image="image"
-                       method="albumentize"
-                       cta="Albumentize!"
-                       ref="request" />
+            <div
+              v-show="image"
+              class="column"
+            >
+              <Request
+                :image="image"
+                method="albumentize"
+                cta="Albumentize!"
+                ref="request"
+              />
             </div>
           </div>
         </div>
       </section>
-    </div>
-    <credits/>
+    </main>
+    <Credits />
   </div>
 </template>
 
 <script>
-import navbar from './components/NavBar.vue'
-import hero from './components/Hero.vue'
-import upload from './components/Upload.vue'
-import request from './components/Request.vue'
-import credits from './components/Credits.vue'
+import Navbar from './components/NavBar.vue'
+import Hero from './components/Hero.vue'
+import Upload from './components/Upload.vue'
+import Request from './components/Request.vue'
+import Credits from './components/Credits.vue'
 
 export default {
   name: 'albumentations',
   components: {
-    navbar,
-    hero,
-    upload,
-    request,
-    credits
+    Navbar,
+    Hero,
+    Upload,
+    Request,
+    Credits
   },
-  data() {
+  data () {
     return {
-      state: 'ready',
-
       image: null,
       total: null,
       error: null,
@@ -52,19 +57,19 @@ export default {
     }
   },
   methods: {
-    reset() {
-      this.image = null;
-      this.total = null;
-      this.error = null;
-      this.result = null;
-      this.$refs.request.result = '';
+    reset () {
+      this.image = null
+      this.total = null
+      this.error = null
+      this.result = null
+      this.$refs.request.result = ''
     },
-    attach(image) {
-      this.reset();
-      this.image = image;
+    attach (image) {
+      this.reset()
+      this.image = image
     }
   },
-  async mounted() {
+  async mounted () {
     await this.$refs.upload.lucky()
   }
 }

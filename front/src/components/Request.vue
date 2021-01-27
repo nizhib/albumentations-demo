@@ -20,7 +20,7 @@
         <integer :max="24" :default="8" ref="repeats" />
 
         <label class="label">Transforms</label>
-        <div v-for="transform in transforms" class="field">
+        <div v-for="transform in transforms" :key="transform" class="field">
           <label class="checkbox">
             <input type="checkbox" :id="transform" :value="transform" v-model="chosen">
             {{ transform }}
@@ -39,6 +39,7 @@
         <div class="container">
           <div class="columns is-multiline is-mobile">
             <div v-for="albumentized in result['data']['albumentized']"
+                 :key="albumentized.slice(0, 16)"
                  :class="'column is-' + ($refs['zoom'] ? zooms[$refs['zoom'].value - 1] : 3)">
               <div class="field">
                 <div class="card">
@@ -62,9 +63,9 @@ import { apiRoot } from '@/settings'
 
 import Integer from '@/components/Integer.vue'
 
-function timeout(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+// function timeout (ms) {
+//   return new Promise(resolve => setTimeout(resolve, ms))
+// }
 
 export default {
   name: 'request',
@@ -104,36 +105,36 @@ export default {
     }
   },
   methods: {
-    async request() {
-      const vm = this;
+    async request () {
+      const vm = this
 
-      vm.state = 'processing';
-      vm.result = '';
+      vm.state = 'processing'
+      vm.result = ''
 
       const input = {
-        'image': vm.image,
-        'albumentations': vm.chosen,
-        'repeats': vm.$refs.repeats.value
-      };
+        image: vm.image,
+        albumentations: vm.chosen,
+        repeats: vm.$refs.repeats.value
+      }
 
       this.axios.post(`${apiRoot}${vm.method}`, input, {
         headers: {
           'content-type': 'application/json'
         }
       })
-      .then(response => {
-        vm.result = response.data;
-      })
-      .catch(error => {
-        vm.result = error;
-      })
-      .finally(() => {
-        vm.state = 'ready';
-      });
+        .then(response => {
+          vm.result = response.data
+        })
+        .catch(error => {
+          vm.result = error
+        })
+        .finally(() => {
+          vm.state = 'ready'
+        })
     }
   },
-  created() {
-    this.chosen = this.transforms;
+  created () {
+    this.chosen = this.transforms
   }
 }
 </script>
